@@ -8,11 +8,6 @@ RUN composer create-project laravel/laravel /app "^12.0" \
 
 COPY . /app/
 
-RUN composer require "league/flysystem-aws-s3-v3:^3.0" \
-    --no-interaction \
-    --no-scripts \
-    --with-all-dependencies
-
 RUN composer install \
     --optimize-autoloader \
     --no-dev \
