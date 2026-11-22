@@ -54,6 +54,18 @@ sebagai secret Koyeb dan jangan kirim atau commit ke repository. Host database
 di atas memakai koneksi direct project `rjgcgebjwivnhgrakomr` di region
 `ap-south-1`. Konfigurasi ini mewajibkan SSL.
 
+## Hak kontrol data Supabase
+
+Akses Laravel memakai role PostgreSQL `postgres`, sehingga aplikasi dapat
+menjalankan migrasi dan mengelola tabel secara penuh. Migrasi terakhir
+mengaktifkan Row Level Security pada `clients`, `client_photos`, dan `payments`.
+Tidak ada policy anon yang dibuat, sehingga API browser/Supabase tidak dapat
+langsung membaca atau mengubah data klien.
+
+Masukkan `DB_PASSWORD` sebagai environment secret bernama persis `DB_PASSWORD`
+di layanan Koyeb. Jangan memasukkan password di branch Git atau
+`B2_APPLICATION_KEY`. Jangan unggah `SUPABASE_SERVICE_ROLE_KEY` ke browser.
+
 `B2_REGION` dan `B2_ENDPOINT` harus sama persis dengan data endpoint bucket
 Backblaze. Bucket sebaiknya tetap privat; akses file klien memakai URL unduhan
 sementara, bukan URL publik permanen.
